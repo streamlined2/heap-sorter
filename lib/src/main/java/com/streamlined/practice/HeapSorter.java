@@ -1,22 +1,26 @@
 package com.streamlined.practice;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
 public class HeapSorter<T> implements Sorter<T> {
 
-	private final Comparator<T> comparator;
-	private final List<T> data;
+	private final Heap<T> heap;
+	private final T[] data;
 
-	public HeapSorter(Comparator<T> comparator, List<T> data) {
-		this.comparator = comparator;
+	public HeapSorter(Comparator<T> comparator, @SuppressWarnings("unchecked") T... data) {
 		this.data = data;
+		heap = new Heap<>(comparator, data);
 	}
 
 	@Override
 	public List<T> getSorted() {
-		// TODO Auto-generated method stub
-		return null;
+		heap.heapify();
+		while (!heap.isEmpty()) {
+			heap.extractMaxAndSwapWithLastValue();
+		}
+		return Arrays.asList(data);
 	}
 
 }

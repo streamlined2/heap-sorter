@@ -23,7 +23,8 @@ class HeapSorterTest {
 		var toBeSorted = new ArrayList<>(sampleData);
 		Collections.shuffle(toBeSorted);
 
-		var sortedData = new HeapSorter<Integer>(Comparator.naturalOrder(), toBeSorted).getSorted();
+		var sortedData = new HeapSorter<Integer>(Comparator.naturalOrder(), toBeSorted.toArray(new Integer[0]))
+				.getSorted();
 
 		assertEquals(sampleData, sortedData);
 
@@ -40,7 +41,8 @@ class HeapSorterTest {
 		var toBeSorted = new ArrayList<>(sampleData);
 		Collections.shuffle(toBeSorted);
 
-		var sortedData = new HeapSorter<Integer>(Comparator.reverseOrder(), toBeSorted).getSorted();
+		var sortedData = new HeapSorter<Integer>(Comparator.reverseOrder(), toBeSorted.toArray(new Integer[0]))
+				.getSorted();
 
 		assertEquals(sampleData, sortedData);
 
